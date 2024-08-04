@@ -38,7 +38,7 @@ broadcast.onmessage = (event) => {
 
 const registration = await navigator.serviceWorker.ready
 let subscription = await registration.pushManager.getSubscription() // déjà faite
-if (!subscription) subscription = registration.pushManager.subscribe({
+if (!subscription) subscription = await registration.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: convertedVapidKey
   })
